@@ -7,33 +7,24 @@ import java.util.HashMap;
 import java.util.List;
 
 class Solution {
-    public int solution(int n) {
-
-        int answer = 0;
-        for (int i = 1; i <= n; i++) {
-
-            int count = 0;
-
-            for (int j = 1; j <= i; j++) {
-                if (i % j == 0) {
-                    count++;
-                    if (count >= 3) {
-                        answer++;
-                        break;
-                    }
+    public int solution(int[] numbers) {
+        int max = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = i + 1 ; j < numbers.length; j++) {
+                if (max < numbers[j] * numbers[i]) {
+                    max = numbers[j] * numbers[i];
                 }
             }
         }
-        return answer;
+        return max;
     }
-
 }
 
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(15));
+        System.out.println(solution.solution(new int[]{0, 31, 24, 10, 1, 9}));
     }
 }
 
