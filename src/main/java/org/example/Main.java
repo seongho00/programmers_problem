@@ -7,20 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 
 class Solution {
-    public long solution(int balls, int share) {
-        return factorial(balls , share) / factorial(share, share);
-    }
-    static long factorial(int number, int count) {
-        long rs = 1;
-
-        while(count > 0){
-            int i = number;
-            rs *= i;
-            count --;
-            number--;
-        }
-
-        return rs;
+    public int solution(int[] numbers, int k) {
+        int index = (((k - 1) * 2) % numbers.length);
+        return numbers[index];
     }
 }
 
@@ -28,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(20,3));
+        System.out.println(solution.solution(new int[]{1, 2, 3}, 3));
     }
 }
 
