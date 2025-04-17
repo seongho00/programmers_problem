@@ -6,16 +6,26 @@ import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(int a, int b, int c) {
-        int answer = 0;
-        // 세 숫자 모두 다를 때
-        if (a != b && a != c && b != c) {
-            return a + b + c;
-        } else if (a == b && a == c) { // 세 숫자 모두 같을 때
-            return (3 * a) * ((int) (Math.pow(a, 2)) * 3) * ((int) (Math.pow(a, 3)) * 3);
-        } else { // 나머지 경우
-            return (a + b + c) * ((int) (Math.pow(a, 2)) + (int) (Math.pow(b, 2) + Math.pow(c, 2)));
+    public int solution(int[] num_list) {
+        // 모든 원소 곱의 합
+        int sumOfMultiples = 1;
+        for (int i = 0; i < num_list.length; i++) {
+            sumOfMultiples *= num_list[i];
         }
+
+        // 모든 원소 제곱의 합
+        int squaresOfSum = 0;
+        for (int i = 0; i < num_list.length; i++) {
+            squaresOfSum += num_list[i];
+        }
+        squaresOfSum *= squaresOfSum;
+
+        // 값 비교
+        if (squaresOfSum > sumOfMultiples) {
+            return 1;
+        }
+
+        return 0;
     }
 }
 
@@ -23,7 +33,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(4, 4, 4));
+        System.out.println(solution.solution(new int[]{5, 7, 8, 3}));
     }
 }
 
