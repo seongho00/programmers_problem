@@ -7,20 +7,33 @@ import java.util.HashMap;
 import java.util.List;
 
 class Solution {
-    public int solution(int[] box, int n) {
-            int x = box[0] / n;
-            int y = box[1] / n;
-            int z = box[2] / n;
+    public int solution(int n) {
 
-        return x * y * z;
+        int answer = 0;
+        for (int i = 1; i <= n; i++) {
+
+            int count = 0;
+
+            for (int j = 1; j <= i; j++) {
+                if (i % j == 0) {
+                    count++;
+                    if (count >= 3) {
+                        answer++;
+                        break;
+                    }
+                }
+            }
+        }
+        return answer;
     }
+
 }
 
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{10, 8, 6}, 3));
+        System.out.println(solution.solution(15));
     }
 }
 
