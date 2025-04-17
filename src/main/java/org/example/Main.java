@@ -3,19 +3,49 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 class Solution {
-    public int[][] solution(int[] num_list, int n) {
-        int[][] answer = new int[num_list.length / n][n];
-        for (int i = 0; i < num_list.length / n; i++) {
+    public String solution(String code) {
+        List<String> codeBits = new ArrayList<>(Arrays.asList(code.split("")));
+        List<String> ret = new ArrayList<>();
 
-            for (int j = 0; j < n; j++) {
-                answer[i][j] = num_list[j + i * n];
+        int mode = 0;
+        for (int idx = 0; idx < codeBits.size(); idx++) {
+            // mode 0 일 때
+            if (mode == 0) {
+                // 모드 바꾸기
+                if (codeBits.get(idx).equals("1")) {
+                    mode = 1;
+                    continue;
+                }
+
+                // 1이 아닐 때 : idx 짝수일 때만 문자 넣기
+                if (idx % 2 == 0){
+                    ret.add(codeBits.get(idx));
+                }
+            }
+
+            // mode 1 일 때
+            if (mode == 1) {
+                // 모드 바꾸기
+                if (codeBits.get(idx).equals("1")) {
+                    mode = 0;
+                    continue;
+                }
+
+                // 1이 아닐 때 : idx 홀수일 때만 문자 넣기
+                if (idx % 2 == 1){
+                    ret.add(codeBits.get(idx));
+                }
             }
         }
-        return answer;
+        // ret 에 아무것도 없을 때
+        if (ret.isEmpty()){
+            return "EMPTY";
+        }
+
+        return String.join("", ret);
     }
 }
 
@@ -23,7 +53,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{100, 95, 2, 4, 5, 6, 18, 33, 948}, 3));
+        System.out.println(solution.solution("abc1abc1abc"));
     }
 }
 
