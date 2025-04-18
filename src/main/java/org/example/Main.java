@@ -1,31 +1,26 @@
 package org.example;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public int solution(int[] num_list) {
-        // 모든 원소 곱의 합
-        int sumOfMultiples = 1;
-        for (int i = 0; i < num_list.length; i++) {
-            sumOfMultiples *= num_list[i];
+    public String solution(String my_string) {
+        // 모음 넣을 배열
+        List<String> vowel = new ArrayList<>();
+        vowel.add("a");
+        vowel.add("e");
+        vowel.add("i");
+        vowel.add("o");
+        vowel.add("u");
+
+        // replace 로 모임 다 삭제
+        for (String i : vowel) {
+            my_string = my_string.replaceAll(i, "");
         }
 
-        // 모든 원소 제곱의 합
-        int squaresOfSum = 0;
-        for (int i = 0; i < num_list.length; i++) {
-            squaresOfSum += num_list[i];
-        }
-        squaresOfSum *= squaresOfSum;
-
-        // 값 비교
-        if (squaresOfSum > sumOfMultiples) {
-            return 1;
-        }
-
-        return 0;
+        return my_string;
     }
 }
 
@@ -33,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{5, 7, 8, 3}));
+        System.out.println(solution.solution("nice to meet you"));
     }
 }
 
