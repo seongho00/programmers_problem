@@ -3,24 +3,23 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Solution {
-    public String solution(String my_string) {
-        // 모음 넣을 배열
-        List<String> vowel = new ArrayList<>();
-        vowel.add("a");
-        vowel.add("e");
-        vowel.add("i");
-        vowel.add("o");
-        vowel.add("u");
+    public int[] solution(String my_string) {
+        List<Integer> words = new ArrayList<>();
 
-        // replace 로 모임 다 삭제
-        for (String i : vowel) {
-            my_string = my_string.replaceAll(i, "");
+        for (int i = 0; i < my_string.length(); i++) {
+            try {
+                words.add(Integer.parseInt(my_string.split("")[i]));
+            } catch (Exception e) {
+                continue;
+            }
         }
+        Collections.sort(words);
 
-        return my_string;
+        return words.stream().mapToInt(x -> x).toArray();
     }
 }
 
@@ -28,7 +27,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("nice to meet you"));
+        System.out.println(solution.solution("hi12392"));
     }
 }
 
