@@ -3,18 +3,23 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 class Solution {
-    public List<Integer> solution(String[] strList) {
-        // 길이 담을 배열 생성
-        List<Integer> wordLength = new ArrayList<>();
+    public int solution(int order) {
+        int count = 0;
+        // 문자열로 변환
+        String orderStr = order + "";
+        // 하나씩 List 배열에 담기
+        List<String> numbers = new ArrayList<>(Arrays.asList(orderStr.split("")));
 
-        for (int i = 0; i < strList.length; i++) {
-            // 각 문자 길이 배열에 넣기
-            wordLength.add(strList[i].length());
+        // 숫자가 3, 6, 9 일 때 count 하나씩 추가
+        for (String number : numbers) {
+            if (number.equals("3") || number.equals("6") || number.equals("9")) {
+                count++;
+            }
         }
-
-        return wordLength;
+        return count;
     }
 }
 
@@ -22,7 +27,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new String[]{"We", "are", "the", "world!"}));
+        System.out.println(solution.solution(29423));
     }
 }
 
