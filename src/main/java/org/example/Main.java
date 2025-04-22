@@ -1,26 +1,22 @@
 package org.example;
 
 
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
+import java.util.List;
+import java.util.Arrays;
 
 class Solution {
-    public long solution(String numbers) {
-        numbers = numbers.replaceAll("zero", "0");
-        numbers = numbers.replaceAll("one", "1");
-        numbers = numbers.replaceAll("two", "2");
-        numbers = numbers.replaceAll("three", "3");
-        numbers = numbers.replaceAll("four", "4");
-        numbers = numbers.replaceAll("five", "5");
-        numbers = numbers.replaceAll("six", "6");
-        numbers = numbers.replaceAll("seven", "7");
-        numbers = numbers.replaceAll("eight", "8");
-        numbers = numbers.replaceAll("nine", "9");
+    public String solution(String my_string, int num1, int num2) {
 
-        return Long.parseLong(numbers);
+        List<String> my_string_bits = Arrays.asList(my_string.split(""));
+
+        String num1_bit = my_string_bits.get(num1);
+        my_string_bits.set(num1,my_string_bits.get(num2));
+        my_string_bits.set(num2,num1_bit);
+
+        return String.join("", my_string_bits);
     }
 }
 
@@ -28,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("onefourzerosixseven"));
+        System.out.println(solution.solution("hello",1,2));
     }
 }
 
