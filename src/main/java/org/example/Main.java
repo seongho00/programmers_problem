@@ -7,18 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(int[] num_list) {
-        String odd = "";
-        String even = "";
+    public int solution(int a, int d, boolean[] included) {
+        int answer = 0;
 
-        for (int i = 0; i < num_list.length; i++) {
-            if (num_list[i] % 2 == 0) {
-                odd += num_list[i];
-            } else {
-                even += num_list[i];
+        for (int i = 0; i < included.length; i++) {
+            if (included[i]) {
+                answer += a + (d * i);
             }
         }
-        return Integer.parseInt(odd) + Integer.parseInt(even);
+        return answer;
     }
 }
 
@@ -26,7 +23,8 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{5, 7, 8, 3}));
+        System.out.println(solution.solution(3, 4, new boolean[]{true, false, false, true, true}));
+
     }
 }
 
