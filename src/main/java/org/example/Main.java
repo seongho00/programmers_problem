@@ -1,22 +1,31 @@
 package org.example;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-import java.util.List;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 class Solution {
-    public String solution(String my_string, int num1, int num2) {
+    public int solution(String[] babbling) {
+        int answer = 0;
+        List<String> speakWords = new ArrayList<>();
+        speakWords.add("aya");
+        speakWords.add("ye");
+        speakWords.add("woo");
+        speakWords.add("ma");
 
-        List<String> my_string_bits = Arrays.asList(my_string.split(""));
-
-        String num1_bit = my_string_bits.get(num1);
-        my_string_bits.set(num1,my_string_bits.get(num2));
-        my_string_bits.set(num2,num1_bit);
-
-        return String.join("", my_string_bits);
+        int count = 0;
+        for (int i = 0; i < babbling.length; i++) {
+            for (int j = 0; j < speakWords.size(); j++) {
+                babbling[i] = babbling[i].replaceAll(speakWords.get(j), " ");
+            }
+        }
+        for (int i = 0; i < babbling.length; i++) {
+            if(babbling[i].trim().isEmpty()){
+                count++;
+            }
+        }
+        return count;
     }
 }
 
@@ -24,7 +33,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("hello",1,2));
+        System.out.println(solution.solution(new String[]{"ayaye", "uuuma", "ye", "yemawoo", "ayaa"}));
     }
 }
 
