@@ -1,31 +1,16 @@
 package org.example;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 class Solution {
-    public String solution(int[] numLog) {
-        String answer = "";
-        for (int i = 0; i < numLog.length - 1; i++) {
-            switch (numLog[i + 1] - numLog[i] ) {
-                case 1:
-                    answer += "w";
-                    break;
-                case -1:
-                    answer += "s";
-                    break;
-                case 10:
-                    answer += "d";
-                    break;
-                case -10:
-                    answer += "a";
-                    break;
-                default:
-                    break;
-            }
+    public int[] solution(int[] arr, int[][] queries) {
+        for (int i = 0; i < queries.length; i++) {
+            int temp = arr[queries[i][0]];
+            arr[queries[i][0]] = queries[i][1];
+            arr[queries[i][1]] = temp;
         }
-        return answer;
+        return arr;
     }
 }
 
@@ -33,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1}));
+        System.out.println(solution.solution(new int[]{0, 1, 2, 3, 4}, new int[][]{{0, 3}, {1, 2}, {1, 4}}));
 
     }
 }
