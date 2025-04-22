@@ -7,19 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(String my_string) {
+    public int solution(String[] s1, String[] s2) {
         int answer = 0;
-
-        if (my_string.contains(" - ")) {
-            my_string = my_string.replace(" - ", " + -");
+        for (String string : s1) {
+            for (String s : s2) {
+                if (string.equals(s)) {
+                    answer++;
+                }
+            }
         }
-
-        List<String> my_strings = Arrays.asList(my_string.split(" \\+ "));
-
-        for  (int i = 0; i < my_strings.size(); i++) {
-            answer += Integer.parseInt(my_strings.get(i));
-        }
-
         return answer;
     }
 }
@@ -28,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("3 + 4"));
+        System.out.println(solution.solution(new String[] {"a", "b", "c"}, new String[]{"com", "b", "d", "p", "c"}));
     }
 }
 
