@@ -8,26 +8,19 @@ import java.util.List;
 
 
 class Solution {
-    public int solution(int[] array, int n) {
-        int answer = 0;
+    public long solution(String numbers) {
+        numbers = numbers.replaceAll("zero", "0");
+        numbers = numbers.replaceAll("one", "1");
+        numbers = numbers.replaceAll("two", "2");
+        numbers = numbers.replaceAll("three", "3");
+        numbers = numbers.replaceAll("four", "4");
+        numbers = numbers.replaceAll("five", "5");
+        numbers = numbers.replaceAll("six", "6");
+        numbers = numbers.replaceAll("seven", "7");
+        numbers = numbers.replaceAll("eight", "8");
+        numbers = numbers.replaceAll("nine", "9");
 
-        List<Integer> differences = new ArrayList<>();
-        List<Integer> answers = new ArrayList<>();
-        // 차이값 구해서 넣기 array 와 n의 차이값 구해서 넣기(절대값으로)
-        for (int i = 0; i < array.length; i++) {
-            differences.add(Math.abs(array[i] - n));
-        }
-        // 차이값의 최소 구하기
-        int min = Collections.min(differences);
-
-        // 차이값의 최소랑 같은 array 배열의 숫자 찾아서 answers 배열에 넣기
-        for (int i = 0; i< array.length; i++) {
-            if (Math.abs(array[i] - n) == min) {
-                answers.add(array[i]);
-            }
-        }
-        // answers 배열 중 가장 작은 값 출력
-        return Collections.min(answers);
+        return Long.parseLong(numbers);
     }
 }
 
@@ -35,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{10, 12}, 11));
+        System.out.println(solution.solution("onefourzerosixseven"));
     }
 }
 
