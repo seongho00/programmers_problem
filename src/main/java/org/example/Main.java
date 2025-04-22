@@ -2,20 +2,21 @@ package org.example;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(int a, int d, boolean[] included) {
-        int answer = 0;
-
-        for (int i = 0; i < included.length; i++) {
-            if (included[i]) {
-                answer += a + (d * i);
-            }
+    public List<Integer> solution(int[] num_list) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < num_list.length; i++) {
+            list.add(num_list[i]);
         }
-        return answer;
+        if (list.get(list.size() - 1) > list.get(list.size() - 2)) {
+            list.add(list.get(list.size() - 1) - list.get(list.size() - 2));
+        } else {
+            list.add(list.get(list.size() - 1) * 2);
+        }
+
+        return list;
     }
 }
 
@@ -23,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(3, 4, new boolean[]{true, false, false, true, true}));
+        System.out.println(solution.solution(new int[]{5, 2, 1, 7, 5}));
 
     }
 }
