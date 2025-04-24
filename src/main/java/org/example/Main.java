@@ -3,19 +3,16 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Solution {
-    public int solution(int n) {
-        double sqrt = Math.sqrt(n);
+    public String solution(String my_string) {
+        my_string = my_string.toLowerCase();
+        List<String> list = Arrays.asList(my_string.split(""));
+        Collections.sort(list);
 
-        if (sqrt == (int) sqrt) {
-            return 1;
-
-        } else {
-            return 2;
-        }
-
+        return String.join("", list);
     }
 }
 
@@ -23,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(976));
+        System.out.println(solution.solution("Bcad"));
 
     }
 }
