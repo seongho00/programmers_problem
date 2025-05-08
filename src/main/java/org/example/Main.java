@@ -4,16 +4,20 @@ package org.example;
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[] arr, int[][] queries) {
-        for (int i = 0; i < queries.length; i++) {
-            for (int j = queries[i][0]; j <= queries[i][1]; j++) {
+    public List<Integer> solution(int n) {
+        List<Integer> list = new ArrayList<>();
+        list.add(n);
+        while (n != 1) {
+            if (n % 2 == 0) {
+                n /= 2;
 
-                if (j % queries[i][2] == 0) {
-                    arr[j] += 1;
-                }
+            } else {
+                n = 3 * n + 1;
+
             }
+            list.add(n);
         }
-        return arr;
+        return list;
     }
 }
 
@@ -21,8 +25,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{0, 1, 2, 4, 3}, new int[][]{{0, 4, 1}, {0, 3, 2}, {0, 3, 3}
-        }));
+        System.out.println(solution.solution(10));
 
     }
 }
