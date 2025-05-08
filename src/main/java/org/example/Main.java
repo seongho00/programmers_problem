@@ -3,21 +3,23 @@ package org.example;
 
 import java.util.*;
 
+
 class Solution {
-    public List<Integer> solution(int n) {
-        List<Integer> list = new ArrayList<>();
-        list.add(n);
-        while (n != 1) {
-            if (n % 2 == 0) {
-                n /= 2;
-
-            } else {
-                n = 3 * n + 1;
-
+    public List<Integer> solution(int[] arr) {
+        List<Integer> stk = new ArrayList<>();
+        int i = 0;
+        while (i < arr.length) {
+            if (stk.isEmpty()) {
+                stk.add(arr[i]);
+                i++;
+            } else if (stk.get(stk.size() - 1) < arr[i]) {
+                stk.add(arr[i]);
+                i++;
+            } else if (stk.get(stk.size() - 1) >= arr[i]) {
+                stk.remove(stk.size() - 1);
             }
-            list.add(n);
         }
-        return list;
+        return stk;
     }
 }
 
@@ -25,7 +27,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(10));
+        System.out.println(solution.solution(new int[]{1, 4, 2, 5, 3}));
 
     }
 }
