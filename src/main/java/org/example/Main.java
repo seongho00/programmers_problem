@@ -5,12 +5,13 @@ import java.util.*;
 
 
 class Solution {
-    public List<Long> solution(int x, int n) {
-        List<Long> answer = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            answer.add(((long) x * (i + 1)));
+    public int solution(int n) {
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 1) {
+                return i;
+            }
         }
-        return answer;
+        return 0;
     }
 }
 
@@ -18,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(2, 5));
+        System.out.println(solution.solution(10));
 
     }
 }
