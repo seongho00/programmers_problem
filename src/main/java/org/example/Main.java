@@ -4,10 +4,12 @@ package org.example;
 import java.util.*;
 
 class Solution {
-    public List<String> solution(String[] names) {
+    public List<String> solution(String[] todo_list, boolean[] finished) {
         List<String> answer = new ArrayList<>();
-        for (int i = 0; i < names.length; i += 5) {
-            answer.add(names[i]);
+        for (int i = 0; i < finished.length; i++) {
+            if (finished[i] == false) {
+                answer.add(todo_list[i]);
+            }
         }
         return answer;
     }
@@ -17,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new String[]{"nami", "ahri", "jayce", "garen", "ivern", "vex", "jinx"}));
+        System.out.println(solution.solution(new String[]{"problemsolving", "practiceguitar", "swim", "studygraph"}, new boolean[]{true, false, true, false}));
 
     }
 }
