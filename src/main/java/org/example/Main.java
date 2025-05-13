@@ -5,7 +5,7 @@ import java.util.Locale;
 
 class Solution {
     public String solution(String myString) {
-        return myString.toUpperCase();
+        return myString.toLowerCase();
     }
 }
 
