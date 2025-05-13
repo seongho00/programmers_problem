@@ -4,10 +4,15 @@ package org.example;
 import java.util.Locale;
 
 class Solution {
-    public String solution(String my_string, String alp) {
-        String upper_alp = alp.toUpperCase();
-        my_string = my_string.replace(alp, upper_alp);
-        return my_string;
+    public String[] solution(String[] strArr) {
+        for (int i = 0; i < strArr.length; i++) {
+            if (i % 2 == 0) {
+                strArr[i] = strArr[i].toLowerCase();
+            } else {
+                strArr[i] = strArr[i].toUpperCase();
+            }
+        }
+        return strArr;
     }
 }
 
@@ -15,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("programmers", "p"));
+        System.out.println(solution.solution(new String[]{"AAA", "BBB", "CCC", "DDD"}));
 
     }
 }
