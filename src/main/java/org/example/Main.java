@@ -1,34 +1,20 @@
 package org.example;
 
 
-import java.util.*;
-
 class Solution {
-    public int solution(int[] arr) {
-        int i = 0;
-
-        while (true) {
-            int[] temp = new int[arr.length];
-            for (int j = 0; j < arr.length; j++) {
-                temp[j] = arr[j];
-            }
-            for (int j = 0; j < arr.length; j++) {
-                if (arr[j] >= 50 && arr[j] % 2 == 0) {
-                    arr[j] = arr[j] / 2;
-
-                } else if (arr[j] < 50 && arr[j] % 2 != 0) {
-                    arr[j] = arr[j] * 2 + 1;
+    public int solution(int[] num_list) {
+        int answer = 0;
+        for (int i = 0; i < num_list.length; i++) {
+            while (num_list[i] != 1) {
+                if (num_list[i] % 2 == 0) {
+                    num_list[i] /= 2;
+                } else {
+                    num_list[i] = (num_list[i] - 1) / 2;
                 }
+                answer++;
             }
-
-
-            if (Arrays.equals(arr, temp)) {
-                return i;
-            }
-            i++;
-
         }
-
+        return answer;
     }
 }
 
@@ -36,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{1, 2, 3, 100, 99, 98}));
+        System.out.println(solution.solution(new int[]{12, 4, 15, 1, 14}));
 
     }
 }
