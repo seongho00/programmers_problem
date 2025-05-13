@@ -4,15 +4,31 @@ package org.example;
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] >= 50 && arr[i] % 2 == 0) {
-                arr[i] = arr[i] / 2;
-            } else if (arr[i] < 50 && arr[i] % 2 != 0) {
-                arr[i] = arr[i] * 2;
+    public int solution(int[] arr) {
+        int i = 0;
+
+        while (true) {
+            int[] temp = new int[arr.length];
+            for (int j = 0; j < arr.length; j++) {
+                temp[j] = arr[j];
             }
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j] >= 50 && arr[j] % 2 == 0) {
+                    arr[j] = arr[j] / 2;
+
+                } else if (arr[j] < 50 && arr[j] % 2 != 0) {
+                    arr[j] = arr[j] * 2 + 1;
+                }
+            }
+
+
+            if (Arrays.equals(arr, temp)) {
+                return i;
+            }
+            i++;
+
         }
-        return arr;
+
     }
 }
 
