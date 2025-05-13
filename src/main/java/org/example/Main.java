@@ -1,20 +1,16 @@
 package org.example;
 
 
+import java.util.Locale;
+
 class Solution {
-    public int solution(int[] num_list) {
-        int answer = 0;
-        if (num_list.length > 10) {
-            for (int i = 0; i < num_list.length; i++) {
-                answer += num_list[i];
-            }
-        } else {
-            answer = 1;
-            for (int i = 0; i < num_list.length; i++) {
-                answer *= num_list[i];
-            }
+    public int solution(String myString, String pat) {
+        myString = myString.toLowerCase();
+        pat = pat.toLowerCase();
+        if (myString.contains(pat)) {
+            return 1;
         }
-        return answer;
+        return 0;
     }
 }
 
@@ -22,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{3, 4, 5, 2, 5, 4, 6, 7, 3, 7, 2, 2, 1}));
+        System.out.println(solution.solution("AbCdEfG", "aBc"));
 
     }
 }
