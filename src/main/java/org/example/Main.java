@@ -7,33 +7,22 @@ import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(String binomial) {
-        int answer = 0;
-
-        if (binomial.contains(" - ")) {
-            binomial = binomial.replace(" - ", " + -");
+    public int solution(String myString, String pat) {
+        myString = myString.replace("A", "0");
+        myString = myString.replace("B", "A");
+        myString = myString.replace("0", "B");
+        if (myString.contains(pat)) {
+            return 1;
         }
-        if (binomial.contains(" + ")) {
-            List<String> num_list = new ArrayList<>(Arrays.asList(binomial.split(" \\+ ")));
-            return Integer.parseInt(num_list.get(0)) + Integer.parseInt(num_list.get(1));
-        }
-
-        if (binomial.contains(" * ")) {
-            List<String> num_list = new ArrayList<>(Arrays.asList(binomial.split(" \\* ")));
-            return Integer.parseInt(num_list.get(0)) * Integer.parseInt(num_list.get(1));
-        }
-
-
-        return answer;
+        return 0;
     }
-
 }
 
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("43 + 12"));
+        System.out.println(solution.solution("ABBAA", "AABB"));
 
     }
 }
