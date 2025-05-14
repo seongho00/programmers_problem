@@ -7,7 +7,8 @@ import java.util.List;
 
 class Solution {
     public List<String> solution(String my_string) {
-        List<String> answer = new ArrayList<>(Arrays.asList(my_string.split(" ")));
+        List<String> answer = new ArrayList<>(Arrays.asList(my_string.trim().split(" ")));
+        answer.removeAll(Arrays.asList("", null));
 
         return answer;
     }
@@ -17,7 +18,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("i love you"));
+        System.out.println(solution.solution(" i    love  you"));
 
     }
 }
