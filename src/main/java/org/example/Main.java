@@ -7,24 +7,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<Integer> solution(int[] arr) {
+    public List<Integer> solution(int[] arr, int k) {
         List<Integer> answer = new ArrayList<>();
-        int i = 0;
-        while (i < arr.length) {
+
+        for (int i = 0; i < arr.length; i++) {
+            boolean isPlus = true;
             if (answer.isEmpty()) {
-                answer.add(arr[i]);
-            } else {
-                if (answer.get(answer.size() - 1) == arr[i]) {
-                    answer.remove(answer.size() - 1);
-                } else {
-                    answer.add(arr[i]);
-                }
+                answer.add(arr[0]);
             }
-            i++;
+
+            for (int j = 0; j < answer.size(); j++) {
+                if (answer.get(j) == arr[i]) {
+                    isPlus = false;
+                    break;
+                }
+
+            }
+            if (isPlus) {
+                answer.add(arr[i]);
+            }
+            if (answer.size() == k) {
+                break;
+            }
+
         }
-        if (answer.isEmpty()) {
-            answer.add(-1);
+        if (answer.size() < k) {
+            for (int i = answer.size(); i < k; i++) {
+                answer.add(-1);
+            }
         }
+
         return answer;
     }
 }
@@ -33,7 +45,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{0, 1, 1, 1, 0}));
+        System.out.println(solution.solution(new int[]{0, 1, 1, 1, 1, 1}, 3));
 
     }
 }
