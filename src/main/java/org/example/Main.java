@@ -8,15 +8,26 @@ import java.util.List;
 
 
 class Solution {
-    public String solution(String s) {
-        List<String> list = new ArrayList<>(Arrays.asList(s.split(" ")));
-        List<Integer> numbers = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            numbers.add(Integer.parseInt(list.get(i)));
+    public int solution(int[] A, int[] B) {
+        int answer = 0;
+        List<Integer> A_list = new ArrayList<>();
+        List<Integer> B_list = new ArrayList<>();
+
+        for (int i = 0; i < A.length; i++) {
+            A_list.add(A[i]);
+            B_list.add(B[i]);
         }
 
+        int size = A_list.size();
+        Collections.sort(A_list);
+        Collections.sort(B_list);
+        Collections.reverse(B_list);
 
-        return Collections.min(numbers) + " " + Collections.max(numbers);
+        for (int i = 0; i < size; i++) {
+            answer += A_list.get(i) * B_list.get(i);
+        }
+
+        return answer;
     }
 }
 
@@ -24,7 +35,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("1 2 3 4"));
+        System.out.println(solution.solution(new int[]{1, 4, 2}, new int[]{5, 4, 4}));
 
     }
 }
