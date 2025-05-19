@@ -3,28 +3,22 @@ package org.example;
 
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 class Solution {
-    boolean solution(String s) {
-        s = s.toLowerCase();
-        int p_count = 0;
-        int y_count = 0;
+    public long solution(long n) {
+        String n_str = String.valueOf(n);
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'p') {
-                p_count++;
-            }
-            if (s.charAt(i) == 'y') {
-                y_count++;
-            }
-        }
-        if (p_count == y_count) {
-            return true;
-        }
+        List<String> list = new ArrayList<>(Arrays.asList(n_str.split("")));
 
-        return false;
+        Collections.sort(list);
+        Collections.reverse(list);
+        long answer = Long.parseLong(String.join("", list));
+
+
+        return answer;
     }
 }
 
@@ -32,7 +26,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("pPoooyY"));
+        System.out.println(solution.solution(118372));
 
     }
 }
