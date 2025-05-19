@@ -8,17 +8,15 @@ import java.util.List;
 
 
 class Solution {
-    public long solution(long n) {
-        String n_str = String.valueOf(n);
-
-        List<String> list = new ArrayList<>(Arrays.asList(n_str.split("")));
-
-        Collections.sort(list);
-        Collections.reverse(list);
-        long answer = Long.parseLong(String.join("", list));
+    public String solution(String s) {
+        List<String> list = new ArrayList<>(Arrays.asList(s.split(" ")));
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            numbers.add(Integer.parseInt(list.get(i)));
+        }
 
 
-        return answer;
+        return Collections.min(numbers) + " " + Collections.max(numbers);
     }
 }
 
@@ -26,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(118372));
+        System.out.println(solution.solution("1 2 3 4"));
 
     }
 }
