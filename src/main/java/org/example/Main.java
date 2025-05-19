@@ -9,21 +9,17 @@ import java.util.List;
 
 class Solution {
     public int solution(int n) {
-        int answer = 0;
-        for (int i = 1; i <= n; i++) {
-            int sum = 0;
-            for (int j = i; j <= n; j++) {
-                sum += j;
+        int answer = n;
+        int n_1_count = Integer.toBinaryString(n).length() - Integer.toBinaryString(n).replace("1", "").length();
 
-                if (sum == n) {
-                    answer++;
-                    break;
-                } else if (sum > n) {
-                    break;
-                }
+        while (true) {
+            answer++;
+            int answer_1_count = Integer.toBinaryString(answer).length() - Integer.toBinaryString(answer).replace("1", "").length();
+
+            if (answer_1_count == n_1_count) {
+                return answer;
             }
         }
-        return answer;
     }
 }
 
