@@ -8,18 +8,16 @@ import java.util.List;
 
 
 class Solution {
-    public int solution(int n) {
-        int answer = n;
-        int n_1_count = Integer.toBinaryString(n).length() - Integer.toBinaryString(n).replace("1", "").length();
-
-        while (true) {
-            answer++;
-            int answer_1_count = Integer.toBinaryString(answer).length() - Integer.toBinaryString(answer).replace("1", "").length();
-
-            if (answer_1_count == n_1_count) {
-                return answer;
+    public int solution(String[] order) {
+        int answer = 0;
+        for (int i = 0; i < order.length; i++) {
+            if (order[i].contains("americano") || order[i].contains("anything")) {
+                answer += 4500;
+            } else if (order[i].contains("cafelatte")) {
+                answer += 5000;
             }
         }
+        return answer;
     }
 }
 
@@ -27,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(15));
+        System.out.println(solution.solution(new String[]{"cafelatte", "americanoice", "hotcafelatte", " anything"}));
 
     }
 }
