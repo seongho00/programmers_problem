@@ -8,24 +8,17 @@ import java.util.List;
 
 
 class Solution {
-    public List<String> solution(String[] picture, int k) {
-        List<String> answer = new ArrayList<>();
-
-        for (int i = 0; i < picture.length; i++) {
-            String temp = "";
-            for (int j = 0; j < picture[i].length(); j++) {
-
-                for (int l = 0; l < k; l++) {
-                    temp += picture[i].charAt(j);
-                }
-
+    public int[] solution(int[] arr, int k) {
+        if (k % 2 == 0) {
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] += k;
             }
-            for (int j = 0; j < k; j++) {
-
-                answer.add(temp);
+        } else {
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] *= k;
             }
         }
-        return answer;
+        return arr;
     }
 }
 
@@ -33,7 +26,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new String[]{".xx...xx.", "x..x.x..x", "x...x...x", ".x.....x.", "..x...x..", "...x.x...", "....x...."}, 2));
+        System.out.println(solution.solution(new int[]{1, 2, 3, 100, 99, 98}, 2));
 
     }
 }
