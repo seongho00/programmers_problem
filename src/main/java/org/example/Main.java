@@ -8,17 +8,17 @@ import java.util.List;
 
 
 class Solution {
-    public int[] solution(int[] arr, int k) {
-        if (k % 2 == 0) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] += k;
-            }
-        } else {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] *= k;
+    public String solution(String myString) {
+        List<String> words = new ArrayList<>();
+        for (int i = 0; i < 11; i++) {
+            words.add(String.valueOf((char) (i + 97)));
+        }
+        for (int i = 0; i < words.size(); i++) {
+            if (myString.contains(words.get(i))) {
+                myString = myString.replace(words.get(i), "l");
             }
         }
-        return arr;
+        return myString;
     }
 }
 
@@ -26,7 +26,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{1, 2, 3, 100, 99, 98}, 2));
+        System.out.println(solution.solution("abcdevwxyz"));
 
     }
 }
