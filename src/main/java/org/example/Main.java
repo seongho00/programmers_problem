@@ -1,35 +1,22 @@
 package org.example;
 
-
-import java.util.Collections;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 
 
 class Solution {
-    public boolean solution(int x) {
-        int sum = 0;
+    public long solution(long n) {
 
-        // 기존 숫자 보존
-        int temp = x;
+        double sqrt = Math.sqrt(n);
+        int intSqrt = (int) sqrt;
 
-        // 일,십,백 숫자 더하기
-        while (true) {
-
-            // 일의 숫자 더하기
-            sum += x % 10;
-
-            // 십의 숫자가 있을 때
-            if (x / 10 != 0) {
-                x = x / 10;
-            } else {
-                break;
-            }
-
+        // 제곱근인 경우
+        if (sqrt - intSqrt == 0) {
+            return (long) (intSqrt + 1) * (intSqrt + 1);
         }
 
-        return temp % sum == 0;
+        return -1;
     }
 }
 
@@ -37,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(10));
+        System.out.println(solution.solution(121));
 
     }
 }
