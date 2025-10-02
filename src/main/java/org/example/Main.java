@@ -6,17 +6,18 @@ import java.math.RoundingMode;
 
 
 class Solution {
-    public long solution(long n) {
+    public int solution(int[] absolutes, boolean[] signs) {
 
-        double sqrt = Math.sqrt(n);
-        int intSqrt = (int) sqrt;
-
-        // 제곱근인 경우
-        if (sqrt - intSqrt == 0) {
-            return (long) (intSqrt + 1) * (intSqrt + 1);
+        int sum = 0;
+        for (int i = 0; i < absolutes.length; i++) {
+            if (signs[i]) {
+                sum += absolutes[i];
+            } else {
+                sum -= absolutes[i];
+            }
         }
 
-        return -1;
+        return sum;
     }
 }
 
@@ -24,7 +25,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(121));
+        System.out.println(solution.solution(new int[]{4,7,12}, new boolean[]{true,false,true}));
 
     }
 }
