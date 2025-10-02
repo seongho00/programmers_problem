@@ -8,17 +8,28 @@ import java.util.List;
 
 
 class Solution {
-    public String solution(String myString) {
-        List<String> words = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
-            words.add(String.valueOf((char) (i + 97)));
-        }
-        for (int i = 0; i < words.size(); i++) {
-            if (myString.contains(words.get(i))) {
-                myString = myString.replace(words.get(i), "l");
+    public boolean solution(int x) {
+        int sum = 0;
+
+        // 기존 숫자 보존
+        int temp = x;
+
+        // 일,십,백 숫자 더하기
+        while (true) {
+
+            // 일의 숫자 더하기
+            sum += x % 10;
+
+            // 십의 숫자가 있을 때
+            if (x / 10 != 0) {
+                x = x / 10;
+            } else {
+                break;
             }
+
         }
-        return myString;
+
+        return temp % sum == 0;
     }
 }
 
@@ -26,7 +37,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("abcdevwxyz"));
+        System.out.println(solution.solution(10));
 
     }
 }
