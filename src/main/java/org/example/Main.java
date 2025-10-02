@@ -9,25 +9,28 @@ import java.util.List;
 
 
 class Solution {
-    public int solution(int[] numbers) {
+    public List solution(int[] arr, int divisor) {
+
         List<Integer> list = new ArrayList<>();
-        int sum = 0;
-        for (int number : numbers) {
+        List<Integer> list2 = new ArrayList<>();
+        for (int number : arr) {
             list.add(number);
         }
 
         Collections.sort(list);
+        for (int i = 0; i < list.size(); i++) {
 
-        for (int i = 0; i < 10; i++) {
-            if (list.contains(i)) {
-                continue;
+            if (list.get(i) % divisor == 0) {
+                list2.add(list.get(i));
             }
-
-            sum += i;
 
         }
 
-        return sum;
+        if (list2.size() == 0) {
+            list2.add(-1);
+        }
+
+        return list2;
     }
 }
 
@@ -35,7 +38,7 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{1, 2, 3, 4, 6, 7, 8, 0}));
+        System.out.println(solution.solution(new int[]{5, 9, 7, 10}, 5));
 
     }
 }
